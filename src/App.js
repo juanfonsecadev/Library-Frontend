@@ -1,67 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import LibraryTable from './components/LibraryTable';
-import AddBookForm from './components/AddBookForm';
-import EditBookForm from './components/EditBookForm';
-import LoanedBooks from './components/LoanedBooks';
+import Login from './components/Login';
+import Home from './components/Home';
+import Register from './components/Register';  // Página de registro (criar conta)
+
+// Função para verificar se o usuário está autenticado
+const isAuthenticated = () => {
+  return localStorage.getItem('token') !== null;  // Verifica se o token existe
+};
 
 function App() {
-  const [books, setBooks] = useState([]);
-  const [editingBook, setEditingBook] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  // Função para buscar livros
-  const fetchBooks = async () => {
-    try {
-      const res = await axios.get('/api/books'); // Endpoint do seu backend
-      setBooks(res.data);
-    } catch (error) {
-      console.error('Erro ao buscar livros:', error);
-    }
-  };
-
-  // Função para filtrar os livros com base no termo de busca
-  const filterBooks = (books) => {
-    return books.filter((book) =>
-      book.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.autor.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.id.toString().includes(searchTerm) // Busca também pelo ID
-    );
-  };
-
   useEffect(() => {
-    fetchBooks();
+    // Aqui você pode verificar o estado do login ao carregar o app, se necessário
   }, []);
 
   return (
-    <div className="container">
-      <div className="grid">
-        {/* Container de Biblioteca com busca */}
-        <LibraryTable 
-          books={filterBooks(books)} 
-          onEdit={setEditingBook} 
-          searchTerm={searchTerm} 
-          setSearchTerm={setSearchTerm} 
+    <Router>
+      <Routes>
+        {/* Rota para Login */}
+        <Route path="/" element={<Login />} />
+
+        {/* Rota para Cadastro */}
+        <Route path="/register" element={<Register />} />
+
+        {/* Rota protegida para Home, redireciona se não estiver autenticado */}
+        <Route 
+          path="/home" 
+          element={isAuthenticated() ? <Home /> : <Navigate to="/" />} 
         />
-        
-        {/* Formulário para adicionar livro */}
-        <AddBookForm onBookAdded={fetchBooks} />
-
-        {/* Formulário para editar livro */}
-        {editingBook && (
-          <EditBookForm 
-            book={editingBook} 
-            onCancel={() => setEditingBook(null)} 
-            onSaved={fetchBooks} 
-          />
-        )}
-
-        {/* Lista de livros emprestados */}
-        <LoanedBooks books={books} />
-      </div>
-    </div>
+      </Routes>
+    </Router>
   );
 }
 

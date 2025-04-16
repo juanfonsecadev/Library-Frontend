@@ -1,0 +1,79 @@
+/* Login.css */
+
+/* Para garantir que o conteúdo ocupe toda a altura da tela */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Container principal que centraliza o conteúdo */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* altura total da tela */
+    background-color: #f4f4f9; /* cor de fundo suave */
+  }
+  
+  /* Caixa de login */
+  .login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left;
+  }
+
+  .login-box h2 { 
+    text-align: center;
+  }
+
+  
+  /* Estilos para os inputs */
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo para o botão */
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para a mensagem de erro */
+  p.error-message {
+    color: red;
+    font-size: 14px;
+  }
+  
+  /* Link para "Criar conta" */
+  .register-link {
+    margin-top: 15px;
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  

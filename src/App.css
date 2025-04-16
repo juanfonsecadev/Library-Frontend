@@ -1,63 +1,101 @@
-body {
-  font-family: sans-serif;
-  background-color: #f2f2f2;
-}
-
-.container {
-  padding: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-input {
-  display: block;
-  width: 96%;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-}
-
-input:focus {
-  outline: 1px solid #ccc;
-}
-
-button {
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #0d9ef1;
-  border: none;
-  cursor: pointer;
-
-}
-
-button:hover {
-  background-color: #0c86cc;
-}
-
-table {
-  width: 100%;
-  margin-top: 10px;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
+/* Reset de estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container principal */
+  .container {
+    width: 100%;
+    max-width: 400px;  /* Reduzir a largura para melhorar a centralização */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;  /* Centralizar o texto dentro do container */
+  }
+  
+  /* Título principal */
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para os formulários */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;  /* Tornar os inputs com largura total */
+  }
+  
+  input:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;  /* Tornar o botão com largura total */
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo para mensagens de erro */
+  .error-message {
+    color: red;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Link para o cadastro */
+  .register-link {
+    margin-top: 15px;
+  }
+  
+  .register-link a {
+    color: #4caf50;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+  
